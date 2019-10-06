@@ -9,6 +9,7 @@ pi_dotfiles_repo:
   git.latest:
     - name: https://github.com/louisblin/dotfiles.git
     - target: /home/pi/.dotfiles
+    - force_fetch: true
 
 pi_dotfiles_install:
   cmd.run:
