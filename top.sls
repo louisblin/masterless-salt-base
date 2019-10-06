@@ -1,7 +1,7 @@
 base:
   '*':
-    - docker
-    - ssh
-    - sysstat
-    - role.interactive_development
+  - docker
+  - ssh
+  - sysstat
+  - role.interactive_development
 
