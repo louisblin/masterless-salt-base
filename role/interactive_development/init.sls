@@ -10,6 +10,7 @@ base_packages_installed:
         - iptables
         - python-pip
         - wget
+        - zsh
 
 GMT:
   timezone.system
