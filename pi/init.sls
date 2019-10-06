@@ -10,6 +10,7 @@ pi_dotfiles_repo:
     - name: https://github.com/louisblin/dotfiles.git
     - target: /home/pi/.dotfiles
     - force_fetch: true
+    - force_reset: true
 
 pi_dotfiles_install:
   cmd.run:
