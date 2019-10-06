@@ -11,13 +11,5 @@ base_packages_installed:
     - python-pip
     - wget
 
-base_packages_purged:
-  pkg.purged:
-  - pkgs:
-    - failban
-    - sysdig
-    - screen
-    - ntp
-
 GMT:
   timezone.system
