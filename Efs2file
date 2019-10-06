@@ -20,7 +20,3 @@ PUT salt/config/etc/salt/minion.d/masterless.conf /etc/salt/minion.d/masterless.
 RUN CMD apt-get update
 RUN CMD apt-get install -y python-zmq python-tornado salt-common salt-minion
 RUN CMD salt-call state.highstate
-
-# Install dofiles
-RUN CMD sudo -u pi git clone https://github.com/louisblin/dotfiles.git /home/pi/.dotfiles
-RUN CMD sudo -u pi /home/pi/.dotfiles/install -v 
