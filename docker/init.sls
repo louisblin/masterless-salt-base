@@ -1,6 +1,6 @@
 docker_packages_installed:
   pkg.installed:
-  - pkg:
+  - pkgs:
     - apt-transport-https
     - ca-certificates
     - software-properties-common
