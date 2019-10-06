@@ -10,6 +10,7 @@
   git.latest:
     - name: https://github.com/louisblin/dotfiles.git
     - target: {{ home }}/.dotfiles
+    - user: {{ user }}
     - force_fetch: true
     - force_reset: true
 
