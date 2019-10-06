@@ -2,7 +2,7 @@ base:
   '*':
     # TODO: disabling docker for now
     # - docker
-    - pi
+    - dotfiles
     - ssh
     - sysstat
     - role.interactive_development
