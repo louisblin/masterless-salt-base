@@ -4,13 +4,14 @@ docker_packages_installed:
     - apt-transport-https
     - ca-certificates
     - software-properties-common
+    - python-pip
     - docker-ce
 
 docker-py:
   pip:
   - installed
   - require:
-    - pkg: base_packages_installed
+    - pkg: docker_packages_installed
 
 #docker-repo:
 #  pkgrepo.managed:
