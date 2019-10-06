@@ -1,17 +1,17 @@
 docker_packages_installed:
   pkg.installed:
-  - pkgs:
-    - apt-transport-https
-    - ca-certificates
-    - software-properties-common
-    - python-pip
-    - docker-ce
+    - pkgs:
+        - apt-transport-https
+        - ca-certificates
+        - software-properties-common
+        - python-pip
+        - docker-ce
 
 docker-py:
   pip:
-  - installed
-  - require:
-    - pkg: docker_packages_installed
+    - installed
+    - require:
+        - pkg: docker_packages_installed
 
 #docker-repo:
 #  pkgrepo.managed:
@@ -23,7 +23,7 @@ docker-py:
 
 docker:
   service:
-  - running
-  - enable: True
-  - watch:
-    - pkg: docker_packages_installed
+    - running
+    - enable: True
+    - watch:
+        - pkg: docker_packages_installed

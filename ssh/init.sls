@@ -1,4 +1,4 @@
 ssh:
   service:
-  - running
-  - enable: True
+    - running
+    - enable: True
