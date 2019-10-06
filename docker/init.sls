@@ -10,7 +10,7 @@ docker-py:
   pip:
     - installed
     - require:
-      - pkg: python-pip
+      - pkg: base_packages_installed
 
 #docker-repo:
 #  pkgrepo.managed:
@@ -25,4 +25,4 @@ docker:
     - running
     - enable: True
     - watch:
-      - pkg: docker-ce
+      - pkg: docker_packages_installed
