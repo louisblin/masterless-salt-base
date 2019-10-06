@@ -8,7 +8,9 @@ base_packages_installed:
         - git
         - iotop
         - iptables
+        - tmux
         - python-pip
+        - vim
         - wget
         - zsh
 
