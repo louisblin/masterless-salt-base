@@ -1,10 +1,10 @@
 docker_packages_installed:
   pkg.installed:
     - pkg:
-        apt-transport-https
-        ca-certificates
-        software-properties-common
-        docker-ce
+        - apt-transport-https
+        - ca-certificates
+        - software-properties-common
+        - docker-ce
 
 docker-py:
   pip:
