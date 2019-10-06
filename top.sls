@@ -1,6 +1,7 @@
 base:
   '*':
-    - docker
+    # TODO: disabling docker for now
+    # - docker
     - pi
     - ssh
     - sysstat
