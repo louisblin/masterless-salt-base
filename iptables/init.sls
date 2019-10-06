@@ -1,3 +1,0 @@
-iptables:
-  pkg:
-    - latest

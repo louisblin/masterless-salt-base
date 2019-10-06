@@ -1,21 +1,26 @@
+# usage: efs2 -u root <targets>
+
 # Download Salt GPG Key for latest major Debian Buster release
 RUN CMD apt-get update
 RUN CMD apt-get install -y wget
 RUN CMD wget -O - https://repo.saltstack.com/py3/debian/10/amd64/2019.2/SALTSTACK-GPG-KEY.pub | sudo apt-key add -
 
 # Copy apt sources.list for Salt
+PUT salt/config/etc/apt/sources.list.d/docker.list /etc/apt/sources.list.d/docker.list 0644
+PUT salt/config/etc/apt/sources.list.d/raspi.list /etc/apt/sources.list.d/raspi.list 0644
 PUT salt/config/etc/apt/sources.list.d/saltstack.list /etc/apt/sources.list.d/saltstack.list 0644
-
-# Install Salt
-RUN CMD apt-get update
-RUN CMD apt-get install -y salt-minion
 
 # Install git and clone this repo
 RUN CMD apt-get install -y git
-RUN CMD git clone https://github.com/louisblin/masterless-salt-base.git /srv/salt/base
+RUN CMD git clone https://github.com/louisblin/masterless-salt-base.git /srv/salt/base || true
+RUN CMD git -C /srv/salt/base pull
 
-# Place Masterless config on target
+# Install & configure masterless (i.e. salt-minion stopeed) salt config on target
 PUT salt/config/etc/salt/minion.d/masterless.conf /etc/salt/minion.d/masterless.conf 0644
+RUN CMD apt-get update
+RUN CMD apt-get install -y python-zmq python-tornado salt-common salt-minion
+RUN CMD salt-call state.highstate
 
-# Run salt-call
-RUN CMD /usr/bin/salt-call state.highstate --local
+# Install dofiles
+RUN CMD sudo -u pi git clone https://github.com/louisblin/dotfiles.git /home/pi/.dotfiles
+RUN CMD sudo -u pi /home/pi/.dotfiles/install -v 
