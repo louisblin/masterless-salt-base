@@ -5,7 +5,6 @@ salt-minion:
     - dead
     - enable: False
 
-# TODO: re-enable this later on
 /etc/cron.d/salt-masterless:
-  file.absent:
+  file.managed:
     - source: salt://salt/config/etc/cron.d/salt-masterless
