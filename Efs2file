@@ -1,12 +1,12 @@
 # usage: efs2 -u root <targets>
 
 # Download Salt GPG Key for latest major Debian Buster release
-RUN CMD apt-get update
 RUN CMD apt-get install -y wget
+RUN CMD wget -O - https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 RUN CMD wget -O - https://repo.saltstack.com/py3/debian/10/amd64/2019.2/SALTSTACK-GPG-KEY.pub | sudo apt-key add -
+RUN CMD apt-get update
 
 # Copy apt sources.list for Salt
-PUT salt/config/etc/apt/sources.list /etc/apt/sources.list 0644
 PUT salt/config/etc/apt/sources.list.d/docker.list /etc/apt/sources.list.d/docker.list 0644
 PUT salt/config/etc/apt/sources.list.d/saltstack.list /etc/apt/sources.list.d/saltstack.list 0644
 
@@ -16,6 +16,7 @@ RUN CMD git clone https://github.com/louisblin/masterless-salt-base.git /srv/sal
 RUN CMD git -C /srv/salt/base pull
 
 # Install & configure masterless (i.e. salt-minion stopeed) salt config on target
+RUN CMD mkdir -p /etc/salt/minion.d
 PUT salt/config/etc/salt/minion.d/masterless.conf /etc/salt/minion.d/masterless.conf 0644
 RUN CMD apt-get update
 RUN CMD apt-get install -y python-zmq python-tornado salt-common salt-minion
